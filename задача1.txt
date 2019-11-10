@@ -1,0 +1,36 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+vector<int> delete_duplicates(vector<int> Array)
+{
+for (int i = 0; i < Array.size(); ++i)
+{
+bool b = false;
+for (int j = i - 1; j >= 0; --j)
+{
+if (Array[i] == Array[j])
+{
+Array.erase(Array.begin() + i);
+b = true;
+break;
+}
+}
+if (b)
+--i;
+}
+return Array;
+}
+
+int main()
+{
+int n;
+cin >> n;
+vector<int> Array(n);
+for (int i = 0; i < n; ++i)
+cin >> Array[i];
+Array = delete_duplicates(Array);
+for (int i = 0; i < Array.size(); ++i)
+cout << Array[i] << " ";
+return 0;
+}

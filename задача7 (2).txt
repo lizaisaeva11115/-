@@ -1,0 +1,33 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int srange_multiply(int a, int b) {
+    int x;
+    x = 0;
+    if ((a >= 0) && (b >= 0)) {
+        for (int i = 0; i < min(a, b); i++) {
+              x = x + max(a, b);
+        } 
+    } else if (a >= 0) { 
+        for (int i = 0; i < a; i++) {
+              x = x + b;
+        } 
+    } else if (b >= 0) {
+        for (int i = 0; i < b; i++) {
+              x = x + a;
+        } 
+    } else { 
+        a = a * (-1);
+        b = b * (-1);
+         for (int i = 0; i < min(a, b); i++) {
+              x = x + max(a, b);
+        } 
+    }
+    return x;
+}
+    int main() {
+  int a, b;
+    cin >> a >> b;
+    cout << srange_multiply(a, b);
+  return 0;
+}

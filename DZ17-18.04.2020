@@ -1,0 +1,50 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+char storage[1000];
+char c;
+void read() {
+    c = getchar();
+}
+
+int main() {
+int n;
+cin >> n;
+int count = 0;
+for(int i = 0; i <= n ; i++) {
+    int x = 1;
+    int y = 0;
+    read();
+    while (c != '\n') {
+        storage[x] = c;
+        x++;
+        read();
+        }
+    for (int i = 1; i < x; ++i) {
+        if (storage[i] == '1')
+            y = y ^ i;
+    }
+    if (y == 0) {
+        cout << "Received data - " << endl << "No errors";
+    }
+    else {
+        cout << "Error in bit with number - " << y << endl << "Corrected binary representation data";
+        if (storage[y] == '1')
+            storage[y] = '0';
+        else
+            storage[y] = '1';
+    }
+    for (int i = 1; i < x; ++i) {
+        if ((fmod(log((float)i) / log(2.0), 1.0) < 0.0000001) == 1)
+            continue;
+        else {
+            cout << storage[i];
+        }
+    }
+    count++;
+    cout << endl;
+}
+return 0;
+}

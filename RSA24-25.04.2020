@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+long long int PowMod(long long int a, long long int e, long long int n) {
+long long int res = 1;
+a = a % n;
+while (e > 0) {
+if (e & 1) res = (res * a) % n;
+e = e >> 1;
+a = (a * a) % n;
+}
+return res;
+}
+
+int main()
+{
+long long int p1, p2, phi, d, e = 0, N, l, m;
+cout << "ВВедите рандомные простые числа: ";
+cin >> p1 » p2;
+N = p1 * p2;
+phi = (p1 - 1) * (p2 - 1);
+for(long long int k1 = 3; k1 < phi; k1++)
+if (phi % k1 != 0)
+{
+e = k1;
+break;
+}
+d = 0;
+do
+{
+d++;
+l = (d * e) % phi;
+} while (l != 1);
+cout << e << "," << N << "\nОткрытый ключ\n";
+cout << d << "," << N << "\nЗакрытый ключ\n";
+cout << "Введите передаваемую информацию в типе целых чисел";
+cin >> m;
+m = PowMod(m, e, N);
+cout << m << endl;
+cout << PowMod(m, d, N);
+return 0;
+}

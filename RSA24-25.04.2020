@@ -16,7 +16,7 @@ int main()
 {
 long long int p1, p2, phi, d, e = 0, N, l, m;
 cout << "ВВедите рандомные простые числа: ";
-cin >> p1 » p2;
+cin >> p1 >> p2;
 N = p1 * p2;
 phi = (p1 - 1) * (p2 - 1);
 for(long long int k1 = 3; k1 < phi; k1++)
